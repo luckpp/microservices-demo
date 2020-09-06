@@ -1,0 +1,17 @@
+apiVersion: apps/v1   # the object bucket to be used
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:                 # specifies how the deployment should behave
+  replicas: 1         # the number of pods we want to create to run an image
+  selector:           # selects the pods with label posts
+    matchLabels:
+      app: posts
+  template:           # Here we specify the exact configuration of the pod we want a deployment to create
+    metadata:         # Works together with the selector section
+      labels:         # so we want the pod to have a label of app: posts
+        app: posts
+    spec:             # similar to pod creation
+      containers:
+        - name: posts
+          image: luckpp/posts:0.0.1
