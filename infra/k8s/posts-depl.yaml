@@ -14,4 +14,5 @@ spec:                 # specifies how the deployment should behave
     spec:             # similar to pod creation
       containers:
         - name: posts
-          image: luckpp/posts:0.0.1
+          image: luckpp/posts
+          # imagePullPolicy: Never
