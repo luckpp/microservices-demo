@@ -15,4 +15,17 @@ spec: # specifies how the deployment should behave
       containers:
         - name: posts
           image: luckpp/posts
-          # imagePullPolicy: Never     # in case the image is not pushed in Docker Hub
+          imagePullPolicy: Never # in case the image is not pushed in Docker Hub
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-clusterip-srv
+spec:
+  selector:
+    app: posts
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
