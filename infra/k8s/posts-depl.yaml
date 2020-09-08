@@ -10,9 +10,9 @@ spec:                 # specifies how the deployment should behave
   template:           # Here we specify the exact configuration of the pod we want a deployment to create
     metadata:         # Works together with the selector section
       labels:         # so we want the pod to have a label of app: posts
-        app: posts
+        app: posts    # it applies an identifier to the pod that is going to be created
     spec:             # similar to pod creation
       containers:
         - name: posts
           image: luckpp/posts
-          # imagePullPolicy: Never
+          # imagePullPolicy: Never     # in case the image is not pushed in Docker Hub
