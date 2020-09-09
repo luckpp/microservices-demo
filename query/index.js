@@ -10,6 +10,8 @@ app.use(cors());
 const posts = {};
 
 const handleEvent = (type, data) => {
+  console.log('Processing event:', type);
+
   if (type === 'PostCreated') {
     const { id, title } = data;
     posts[id] = { id, title, comments: [] };
@@ -43,12 +45,12 @@ app.post('/events', (req, res) => {
 });
 
 app.listen(4002, async () => {
-  console.log('Listening on 4002');
+  console.log('[query] Listening on 4002!');
 
-  const res = await axios.get('http://localhost:4005/events');
+  const res = await axios.get('http://event-bus-srv:4005/events');
 
   for (let event of res.data) { // whenever we use axios the actual data is inside res.data
-    console.log('Processing event:', event.type);
+    console.log('[query] Processing event:', event.type);
     handleEvent(event.type, event.data);
   }
 });
