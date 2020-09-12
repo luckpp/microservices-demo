@@ -101,4 +101,7 @@ dist
 .dynamodb/
 
 # TernJS port file
-.tern-port
+.tern-
+
+# skaffold temp file
+infra/k8s/skaffold
